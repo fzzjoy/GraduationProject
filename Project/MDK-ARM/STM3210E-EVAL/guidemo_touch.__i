@@ -1,0 +1,5 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I..\ -I..\..\Libraries\CMSIS\CM3\CoreSupport -I..\..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Libraries\STM32_USB-FS-Device_Driver\inc -I..\..\Utilities\STM32_EVAL -I..\..\Utilities\STM32_EVAL\Common -I..\..\Utilities\STM32_EVAL\STM3210E_EVAL -I..\..\uCOS-II\Ports\ARM-Cortex-M3\Generic\RealView -I..\..\uCOS-II\Source -I..\..\uCOS-II\Cfg -I..\..\Bsp -I..\..\App -I..\..\FatFS -I..\..\uCGUI\GUI\inc -I..\..\uCGUI\Config -I..\..\uCGUI\GUIDemo 
+-I E:\Keil\ARM\RV31\INC 
+-I E:\Keil\ARM\CMSIS\Include 
+-I E:\Keil\ARM\Inc\++ST\STM32F10x 
+-DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -DUSE_STM3210E_EVAL -o ".\STM3210E-EVAL\guidemo_touch.o" --omf_browse ".\STM3210E-EVAL\guidemo_touch.crf" --depend ".\STM3210E-EVAL\guidemo_touch.d" "..\..\uCGUI\GUIDemo\GUIDEMO_Touch.c"

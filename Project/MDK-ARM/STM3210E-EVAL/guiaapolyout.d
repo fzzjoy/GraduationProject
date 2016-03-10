@@ -1,0 +1,9 @@
+.\stm3210e-eval\guiaapolyout.o: ..\..\uCGUI\GUI\AntiAlias\GUIAAPolyOut.c
+.\stm3210e-eval\guiaapolyout.o: E:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\stm3210e-eval\guiaapolyout.o: E:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\stm3210e-eval\guiaapolyout.o: ..\..\uCGUI\GUI\inc\GUI.h
+.\stm3210e-eval\guiaapolyout.o: ..\..\uCGUI\GUI\inc\GUI_ConfDefaults.h
+.\stm3210e-eval\guiaapolyout.o: ..\..\uCGUI\Config\GUIConf.h
+.\stm3210e-eval\guiaapolyout.o: ..\..\uCGUI\GUI\inc\GUIType.h
+.\stm3210e-eval\guiaapolyout.o: ..\..\uCGUI\GUI\inc\LCD.h
+.\stm3210e-eval\guiaapolyout.o: ..\..\uCGUI\GUI\inc\GUIVersion.h
