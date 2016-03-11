@@ -2,6 +2,8 @@
 #include "WM.h"
 #include "BUTTON.h"
 #include "AppFrame.h"
+#include "RTC.h"
+#include "time.h"
 
 
 #define BUTTON_ID_LEFT		0
@@ -235,7 +237,7 @@ static void _cbCalendar(WM_MESSAGE *pMsg)
 		GUI_SetBkColor(GUI_WHITE);
 		GUI_Clear();
 		GUI_SetColor(GUI_RED);
-		_ShowButton(pMsg->hWin);
+		//_ShowButton(pMsg->hWin);
 		DisCalendar(cldDate.year, cldDate.month, cldDate.day, cldDate.weekday);
 		break;
 	case WM_NOTIFY_PARENT:
@@ -303,6 +305,18 @@ static void _cbCalendar(WM_MESSAGE *pMsg)
 void MainTask_AppCalendar(void)
 {
 	WM_HWIN hWinCalendar;
+	u32 curtimestamp = 0;
+	struct tm currUtime;
+	
+	//Init Time
+	curtimestamp = Time_GetRTCTimeByUnix();
+	currUtime = Time_ConvUnixToCalendar(curtimestamp);
+	cldDate.year = currUtime.tm_year;
+	cldDate.month = currUtime.tm_mon+1;
+	cldDate.day = currUtime.tm_mday;
+	if (currUtime.tm_wday == 0)
+		cldDate.weekday = 7;
+	else cldDate.weekday = currUtime.tm_wday;
 
 	//GUI_Init();
 	hWinCalendar = WM_CreateWindow(320, 0, 320, 240, WM_CF_SHOW, _cbCalendar, 0);
@@ -310,9 +324,12 @@ void MainTask_AppCalendar(void)
 	_MoveShiftWindow(&hWinCalendar, MEMDEV_ANIMATION_LEFT, WM_Shift_ToLCD, 0);
 	WM_EnableMemdev(hWinCalendar);
 
+	_ShowButton(hWinCalendar);
 	while (!GUI_CheckCancel(APP_Calendar))
 	{
-		GUI_Delay(10);
+		//GUI_Delay(10);
+		GUI_Exec();
+		GUI_X_ExecIdle();
 	}
 	WM_DeleteWindow(hWinCalendar);
 	hWinCalendar = 0;

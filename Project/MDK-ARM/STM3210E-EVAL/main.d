@@ -53,3 +53,5 @@
 .\stm3210e-eval\main.o: ..\..\FatFS\ff.h
 .\stm3210e-eval\main.o: ..\..\FatFS\integer.h
 .\stm3210e-eval\main.o: ..\..\FatFS\ffconf.h
+.\stm3210e-eval\main.o: ..\..\Bsp\RTC.h
+.\stm3210e-eval\main.o: E:\Keil\ARM\ARMCC\bin\..\include\time.h

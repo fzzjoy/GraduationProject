@@ -246,8 +246,6 @@ void MainTask_AppStopWatch(void)
 	GUI_DispString(".");*/
 	
 	_ShowButton(hWinStopWatch);
-
-
 	while (!GUI_CheckCancel(APP_StopWatch))
 	{
 		GUI_Delay(1);

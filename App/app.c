@@ -44,7 +44,7 @@ void Task2_Func(void *p_arg)
 	}
 }
 
-void Task3_Func(void *p_arg)
+/*void Task3_Func(void *p_arg)
 {
 	(void)p_arg;
 	while(1)
@@ -55,7 +55,7 @@ void Task3_Func(void *p_arg)
 		STM_EVAL_LEDOff(LED3);
 		OSTimeDly(1000);
 	}
-}
+} */
 
 
 void App_TaskStart(void)
@@ -64,6 +64,6 @@ void App_TaskStart(void)
 	SysTick_Config(SystemCoreClock / OS_TICKS_PER_SEC);
 	OSTaskCreate(User_Task_Func, (void *)0, (OS_STK *)&User_Task_Stack[USE_TASK_STACK_SIZE-1],  User_Task_PRIO);
 	OSTaskCreate(Task2_Func, (void *)0, (OS_STK *)&Task2_Stack[TASK2_STACK_SIZE-1],  Task2_PRIO);
-	OSTaskCreate(Task3_Func, (void *)0, (OS_STK *)&Task3_Stack[TASK3_STACK_SIZE-1],  Task3_PRIO);
+//	OSTaskCreate(Task3_Func, (void *)0, (OS_STK *)&Task3_Stack[TASK3_STACK_SIZE-1],  Task3_PRIO);
 	OSStart();
 }

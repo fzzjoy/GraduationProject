@@ -18,6 +18,8 @@
 #include "hw_config.h"
 #include "usb_pwr.h"
 #include "ff.h"
+#include "RTC.h"
+#include "time.h"
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -47,6 +49,9 @@ const uint8_t BmpCheck[2] =
     0x42, 0x4D
   };
 
+struct tm CurTime; 
+
+
 /* Private function prototypes -----------------------------------------------*/
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -73,6 +78,19 @@ int main(void)
        To reconfigure the default setting of SystemInit() function, refer to
        system_stm32f10x.c file
      */     
+
+ /*Init RTC*/
+ /*使能时钟线*/
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR | RCC_APB1Periph_BKP, ENABLE);
+
+  CurTime.tm_year = 2016;
+  CurTime.tm_mon =  3;
+  CurTime.tm_mday = 11;
+  CurTime.tm_hour = 22;
+  CurTime.tm_min = 52;
+  CurTime.tm_sec = 40;
+  CurTime.tm_wday=5;
+  RTC_Init(CurTime);
 
   /* Initialize LEDs, Key Button, LCD and COM port(USART) available on
      STM3210X-EVAL board ******************************************************/
@@ -105,15 +123,15 @@ int main(void)
 
   /* Display message on STM3210X-EVAL LCD *************************************/
   /* Clear the LCD */ 
-  LCD_Clear(LCD_COLOR_WHITE);
+//  LCD_Clear(LCD_COLOR_WHITE);
 
   /* Set the LCD Back Color */
-  LCD_SetBackColor(LCD_COLOR_BLUE);
+//  LCD_SetBackColor(LCD_COLOR_BLUE);
   /* Set the LCD Text Color */
-  LCD_SetTextColor(LCD_COLOR_WHITE);
-  LCD_DisplayStringLine(LCD_LINE_0, (uint8_t *)MESSAGE1);
-  LCD_DisplayStringLine(LCD_LINE_1, (uint8_t *)MESSAGE2);
-  LCD_DisplayStringLine(LCD_LINE_2, (uint8_t *)MESSAGE3);
+//  LCD_SetTextColor(LCD_COLOR_WHITE);
+//  LCD_DisplayStringLine(LCD_LINE_0, (uint8_t *)MESSAGE1);
+//  LCD_DisplayStringLine(LCD_LINE_1, (uint8_t *)MESSAGE2);
+//  LCD_DisplayStringLine(LCD_LINE_2, (uint8_t *)MESSAGE3);
 
   /* Retarget the C library printf function to the USARTx, can be USART1 or USART2
      depending on the EVAL board you are using ********************************/

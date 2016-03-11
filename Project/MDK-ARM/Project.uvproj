@@ -482,6 +482,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\Bsp\tsc2046.c</FilePath>
             </File>
+            <File>
+              <FileName>RTC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Bsp\RTC.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4101,6 +4106,16 @@
               <FileName>AppStopWatch.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\uCGUI\GUIDemo\AppStopWatch.c</FilePath>
+            </File>
+            <File>
+              <FileName>AppClock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\uCGUI\GUIDemo\AppClock.c</FilePath>
+            </File>
+            <File>
+              <FileName>AppLed.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\uCGUI\GUIDemo\AppLed.c</FilePath>
             </File>
           </Files>
         </Group>
