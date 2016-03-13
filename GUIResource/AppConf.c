@@ -7,6 +7,8 @@ static void(*_apfTest[])(void) = {
 	MainTask_AppStopWatch,
 	MainTask_AppClock,
 	MainTask_AppLed,
+	MainTask_AppCalculator,
+	MainTask_AppFile,
 	0
 };
 

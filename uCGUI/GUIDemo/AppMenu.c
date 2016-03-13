@@ -33,7 +33,7 @@ extern GUI_CONST_STORAGE GUI_BITMAP bmled;
 
 static BUTTON_Handle   _ahButton[6];
 
-static _ShowButton(WM_HWIN hWin)
+static void _ShowButton(WM_HWIN hWin)
 {
 	_ahButton[0] = BUTTON_CreateAsChild(50, 50, 40, 40, hWin, BUTTON_ID_CALENDAR, WM_CF_SHOW | WM_CF_STAYONTOP | WM_CF_MEMDEV);
 	_ahButton[1] = BUTTON_CreateAsChild(140, 50, 40, 40, hWin, BUTTON_ID_STOPWATCH, WM_CF_SHOW | WM_CF_STAYONTOP | WM_CF_MEMDEV);
@@ -53,6 +53,7 @@ static _ShowButton(WM_HWIN hWin)
 static void _cbMenu(WM_MESSAGE *pMsg)
 {
 	int NCode, Id;
+	
 	switch (pMsg->MsgId)
 	{
 	case WM_PAINT:
@@ -99,6 +100,18 @@ static void _cbMenu(WM_MESSAGE *pMsg)
 				break;
 			case BUTTON_ID_LED:
 				GUI_SetAppIndex(APP_Led);
+				GUI_SetAppDirection(MEMDEV_ANIMATION_BOTTOM);
+				GUI_SetCancel(APP_MainMenu);
+				GUI_ClearHalt(); // Clear _Halt, so 
+				break;
+			case BUTTON_ID_CALCULATOR:
+				GUI_SetAppIndex(APP_Calculator);
+				GUI_SetAppDirection(MEMDEV_ANIMATION_BOTTOM);
+				GUI_SetCancel(APP_MainMenu);
+				GUI_ClearHalt(); // Clear _Halt, so 
+				break;
+			case BUTTON_ID_FILESYSTEM:
+				GUI_SetAppIndex(APP_File);
 				GUI_SetAppDirection(MEMDEV_ANIMATION_BOTTOM);
 				GUI_SetCancel(APP_MainMenu);
 				GUI_ClearHalt(); // Clear _Halt, so 

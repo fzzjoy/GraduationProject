@@ -726,6 +726,8 @@
 ".\stm3210e-eval\appstopwatch.o"
 ".\stm3210e-eval\appclock.o"
 ".\stm3210e-eval\appled.o"
+".\stm3210e-eval\appcalculator.o"
+".\stm3210e-eval\appfile.o"
 ".\stm3210e-eval\ff.o"
 ".\stm3210e-eval\diskio.o"
 ".\stm3210e-eval\cc936.o"
