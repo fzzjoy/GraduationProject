@@ -2,6 +2,9 @@
 #include "WM.h"
 #include "BUTTON.h"
 #include "AppFrame.h"
+#include "time.h"
+#include "RTC.h"
+
 
 #define BUTTON_ID_CLEAR		0
 #define BUTTON_ID_MULTI		1
@@ -201,7 +204,7 @@ static void StopWatch_UI(void)
 			}
 		}
 		GUI_SetBkColor(GUI_WHITE);
-		GUI_SetColor(GUI_BLACK);
+		GUI_SetColor(GUI_BLACK); 
 		GUI_SetTextMode(GUI_TM_NORMAL);
 		GUI_SetFont(&GUI_FontD48);
 		GUI_DispDecAt(STime.min, 30, 75, 2);
@@ -228,6 +231,8 @@ static void StopWatch_UI(void)
 void MainTask_AppStopWatch(void)
 {
 	WM_HWIN hWinStopWatch;
+	u32 oldtimestamp = 0;
+	u32 curtimestamp = 0;
 
 	ModeFlag = STOPWATCH_INIT;
 	STime.min=STime.sec=STime.ms=0;
@@ -235,44 +240,22 @@ void MainTask_AppStopWatch(void)
 	hWinStopWatch = WM_CreateWindow(320, 0, 320, 240, WM_CF_SHOW, _cbStopWatch, 0);
 	WM_SetFocus(hWinStopWatch);
 	_MoveShiftWindow(&hWinStopWatch, MEMDEV_ANIMATION_LEFT, WM_Shift_ToLCD, 0);
+	WM_SelectWindow(hWinStopWatch);
 	WM_EnableMemdev(hWinStopWatch);
 
-
+    _ShowButton(hWinStopWatch);
 	
-/*	GUI_SetFont(&GUI_FontD48);
-	GUI_GotoXY(105, 70);
-	GUI_DispString(":");
-	GUI_GotoXY(200, 70);
-	GUI_DispString(".");*/
-	
-	_ShowButton(hWinStopWatch);
-	while (!GUI_CheckCancel(APP_StopWatch))
+	while(!GUI_CheckCancel(APP_StopWatch))
 	{
 		GUI_Delay(1);
-	//	WM_InvalidateWindow(hWinStopWatch);
-//		GUI_Exec();
-//		GUI_X_ExecIdle();
-		//StopWatch_UI();
-		if (ModeFlag == STOPWATCH_RUN)
+		if(STOPWATCH_RUN==ModeFlag)
 		{
-			STime.ms++;
-			if ((STime.ms >= 100) || (1 == OneSecflag))
-			{
-				STime.sec++;
-				STime.ms = 0;
-				if (STime.sec >= 60)
-				{
-					STime.min++;
-					STime.sec = 0;
-					if (STime.min >= 100)
-					{
-						STime.ms = 99;
-						STime.sec = 59;
-						STime.min = 99;
-					}
-				}
-			}
-			WM_InvalidateWindow(hWinStopWatch);
+			curtimestamp = Time_GetRTCTimeByUnix();
+	        if( 1==curtimestamp-oldtimestamp )
+	       		 OneSecflag=1;
+	        else OneSecflag=0;
+	        oldtimestamp=curtimestamp;
+			StopWatch_UI();
 		}
 	}
 	WM_DeleteWindow(hWinStopWatch);

@@ -8,6 +8,14 @@ Project File Date:  03/13/2016
 
 <h2>Output:</h2>
 Build target 'STM3210E-EVAL'
+compiling AppStopWatch.c...
+..\..\uCGUI\GUIDemo\AppStopWatch.c(160): warning:  #223-D: function "GUI_SetAppIndex" declared implicitly
+..\..\uCGUI\GUIDemo\AppStopWatch.c(161): warning:  #223-D: function "GUI_SetAppDirection" declared implicitly
+..\..\uCGUI\GUIDemo\AppStopWatch.c(162): warning:  #223-D: function "_MoveShiftWindow" declared implicitly
+..\..\uCGUI\GUIDemo\AppStopWatch.c(163): warning:  #223-D: function "GUI_SetCancel" declared implicitly
+..\..\uCGUI\GUIDemo\AppStopWatch.c(164): warning:  #223-D: function "GUI_ClearHalt" declared implicitly
+..\..\uCGUI\GUIDemo\AppStopWatch.c(242): warning:  #223-D: function "_MoveShiftWindow" declared implicitly
+..\..\uCGUI\GUIDemo\AppStopWatch.c(248): warning:  #223-D: function "GUI_CheckCancel" declared implicitly
 compiling AppFile.c...
 ..\..\uCGUI\GUIDemo\AppFile.c(50): warning:  #188-D: enumerated type mixed with another type
 ..\..\uCGUI\GUIDemo\AppFile.c(52): warning:  #223-D: function "GUI_ClearHalt" declared implicitly
@@ -15,5 +23,5 @@ compiling AppFile.c...
 ..\..\uCGUI\GUIDemo\AppFile.c(90): warning:  #223-D: function "strcat" declared implicitly
 ..\..\uCGUI\GUIDemo\AppFile.c(129): warning:  #177-D: variable "path" was declared but never referenced
 linking...
-Program Size: Code=67216 RO-data=335828 RW-data=1400 ZI-data=41328  
-".\STM3210E-EVAL\STM3210E-EVAL.axf" - 0 Errors, 5 Warning(s).
+Program Size: Code=67340 RO-data=335824 RW-data=1400 ZI-data=41328  
+".\STM3210E-EVAL\STM3210E-EVAL.axf" - 0 Errors, 12 Warning(s).
